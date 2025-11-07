@@ -36,8 +36,6 @@ void *reader(void *args) {
     pthread_mutex_lock(&write_mutex);
   pthread_mutex_unlock(&read_mutex);
 
-  pthread_mutex_unlock(&priority);
-
   printf("Reader %ld: The current value of cnt is %d\n", id, cnt);
 
   pthread_mutex_lock(&read_mutex);
@@ -46,7 +44,7 @@ void *reader(void *args) {
     pthread_mutex_unlock(&write_mutex);
   pthread_mutex_unlock(&read_mutex);
 
-  usleep(100000);
+  pthread_mutex_unlock(&priority);
   return NULL;
 }
 

@@ -24,8 +24,6 @@ void *reader(void *args) {
     sem_wait(&write_mutex);
   sem_post(&read_mutex);
 
-  sem_post(&priority);
-
   long *str = (long *)shmat(shmid, NULL, 0);
   printf("The reader saw: %ld\n", *str);
   shmdt(str);
@@ -35,6 +33,8 @@ void *reader(void *args) {
   if (read_count == 0)
     sem_post(&write_mutex);
   sem_post(&read_mutex);
+
+  sem_post(&priority);
   return NULL;
 }
 
