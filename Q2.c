@@ -11,13 +11,16 @@ int reader_cnt = 0;
 
 void *writer(void *args) {
   long id = (long)args;
+
   pthread_mutex_lock(&priority);
+
   pthread_mutex_lock(&write_mutex);
   int old = cnt;
   cnt++;
   printf("Writer %ld: Incremented the vlaue of cnt from %d to %d\n", id,
          cnt - 1, cnt);
   pthread_mutex_unlock(&write_mutex);
+
   pthread_mutex_unlock(&priority);
   return NULL;
 }
@@ -26,11 +29,13 @@ void *reader(void *args) {
   long id = (long)args;
 
   pthread_mutex_lock(&priority);
+
   pthread_mutex_lock(&read_mutex);
   reader_cnt++;
   if (reader_cnt == 1)
     pthread_mutex_lock(&write_mutex);
   pthread_mutex_unlock(&read_mutex);
+
   pthread_mutex_unlock(&priority);
 
   printf("Reader %ld: The current value of cnt is %d\n", id, cnt);
