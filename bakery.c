@@ -34,7 +34,7 @@ void lock(int i) {
 
 void *functhread(void *args) {
   long i = (long)args;
-  for (int k = 0; k < 10; k++) {
+  for (int k = 0; k < 3; k++) {
     lock(i);
     printf("Thread %ld entered the CS\n", i);
     static int cnt = 0;
