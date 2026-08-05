@@ -4,6 +4,11 @@
 #Remember, since these lines cause an offset you must have 25 lines here unless you update the step offset. Otherwise it all goes wrong.
 #This is the small version for 130x36 terminal resolution
 echo ""
+echo ""
+echo "BIG HINT: Open the Commit History"
+echo ""
+echo ""
+echo ""
 echo "The answer to life, the universe, and all things is:"
 sleep 2
 echo "Calculating.... 0%"
