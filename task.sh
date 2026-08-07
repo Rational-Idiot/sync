@@ -5,7 +5,7 @@
 #This is the small version for 130x36 terminal resolution
 echo ""
 echo ""
-echo "BIG HINT: Open the Commit History"
+echo -e "\e[31mBIG HINT: Open the Commit History\e[0m"
 echo ""
 echo ""
 echo ""
